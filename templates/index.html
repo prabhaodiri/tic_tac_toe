@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>🟩 Tic Tac Toe</h2>
+        <p>{{ message or ('Player ' + player + "'s turn") }}</p>
+        <form method="POST">
+            <table>
+                {% for i in range(3) %}
+                <tr>
+                    {% for j in range(3) %}
+                    <td>
+                        {% if board[i][j] == "" %}
+                        <button type="submit" name="row" value="{{ i }}">
+                            <input type="hidden" name="col" value="{{ j }}">
+                            &nbsp;
+                        </button>
+                        {% else %}
+                        {{ board[i][j] }}
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+        <br>
+        <a href="/reset"><button>Restart Game</button></a>
+    </div>
+</body>
+</html>
